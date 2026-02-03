@@ -5,7 +5,9 @@
       "Bash(npm run build:*)",
       "Bash(git init:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"$\\(cat <<''EOF''\nMigrate to React + Vite\n\n- Complete rewrite with React + Vite for better performance\n- Inline SVG logo component \\(no external file loading\\)\n- Lucide React icons \\(tree-shaked, smaller bundle\\)\n- GitHub Actions builds and deploys dist folder\n- ~68KB gzipped total bundle\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nMigrate to React + Vite\n\n- Complete rewrite with React + Vite for better performance\n- Inline SVG logo component \\(no external file loading\\)\n- Lucide React icons \\(tree-shaked, smaller bundle\\)\n- GitHub Actions builds and deploys dist folder\n- ~68KB gzipped total bundle\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nFix logo - use original SVG file\n\n- Use external logo.svg instead of broken inline SVG\n- Original logo with house, mosquito, and prohibition sign\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)"
     ]
   }
 }
