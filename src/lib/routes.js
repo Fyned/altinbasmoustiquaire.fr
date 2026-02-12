@@ -1,0 +1,18 @@
+export const ROUTES = {
+  home: '/',
+  products: '/nos-produits',
+  productFenetre: '/nos-produits/moustiquaire-fenetre',
+  productPorte: '/nos-produits/moustiquaire-porte-fenetre',
+  productBaie: '/nos-produits/moustiquaire-baie-vitree',
+  productRideaux: '/nos-produits/rideaux-sur-mesure',
+  gallery: '/nos-realisations',
+  devis: '/devis-gratuit',
+  about: '/a-propos',
+  faq: '/faq',
+  contact: '/contact',
+  zone: '/zone-intervention',
+  mentionsLegales: '/mentions-legales',
+  confidentialite: '/politique-confidentialite',
+  cookies: '/politique-cookies',
+  cgv: '/conditions-generales-vente',
+}

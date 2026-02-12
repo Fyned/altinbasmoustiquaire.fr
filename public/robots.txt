@@ -1,0 +1,11 @@
+# robots.txt — altinbasmoustiquaire.fr
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://altinbasmoustiquaire.fr/sitemap.xml
+
+# Block admin/internal paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
