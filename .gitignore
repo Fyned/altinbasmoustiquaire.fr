@@ -22,3 +22,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw client assets (not for production)
+ALTINBAS-GORSEL-VE-VIDEOLAR/
+
+# Claude Code settings
+.claude/
+
+# Temp files
+nul

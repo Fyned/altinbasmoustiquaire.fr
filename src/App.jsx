@@ -1,96 +1,77 @@
-import { Phone, Truck, Mail, MapPin, Instagram, Facebook } from 'lucide-react'
-import Logo from './components/Logo'
-import './styles/App.css'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ROUTES } from './lib/routes'
+import Header from './components/layout/Header'
+import Footer from './components/layout/Footer'
+import ScrollToTop from './components/common/ScrollToTop'
+import WhatsAppButton from './components/common/WhatsAppButton'
+import StickyMobileCTA from './components/layout/StickyMobileCTA'
+import ConsentBanner from './components/common/ConsentBanner'
 
-function App() {
+// Lazy-loaded pages
+const HomePage = lazy(() => import('./pages/HomePage'))
+const ProductsPage = lazy(() => import('./pages/ProductsPage'))
+const ProductFenetrePage = lazy(() => import('./pages/ProductFenetrePage'))
+const ProductPortePage = lazy(() => import('./pages/ProductPortePage'))
+const ProductBaieVitreePage = lazy(() => import('./pages/ProductBaieVitreePage'))
+const ProductRideauxPage = lazy(() => import('./pages/ProductRideauxPage'))
+const GalleryPage = lazy(() => import('./pages/GalleryPage'))
+const DevisPage = lazy(() => import('./pages/DevisPage'))
+const AboutPage = lazy(() => import('./pages/AboutPage'))
+const FAQPage = lazy(() => import('./pages/FAQPage'))
+const ContactPage = lazy(() => import('./pages/ContactPage'))
+const ZonePage = lazy(() => import('./pages/ZonePage'))
+const MentionsLegalesPage = lazy(() => import('./pages/MentionsLegalesPage'))
+const ConfidentialitePage = lazy(() => import('./pages/ConfidentialitePage'))
+const CookiesPage = lazy(() => import('./pages/CookiesPage'))
+const CGVPage = lazy(() => import('./pages/CGVPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
+
+function LoadingFallback() {
   return (
-    <>
-      <div className="background-pattern" />
-
-      <main className="container">
-        <div className="content-card">
-          {/* Logo */}
-          <div className="logo-container">
-            <Logo className="logo" />
-          </div>
-
-          {/* Titles */}
-          <h1 className="title">Site en construction</h1>
-          <p className="subtitle">Notre nouveau site arrive bientôt !</p>
-          <p className="description">
-            Nous travaillons actuellement sur notre site web pour vous offrir une meilleure expérience.
-            En attendant, n'hésitez pas à nous contacter.
-          </p>
-
-          {/* Contact */}
-          <div className="contact-section">
-            <a href="tel:+33660990370" className="contact-item" target="_blank" rel="noopener noreferrer">
-              <Phone className="icon" size={22} />
-              <div className="contact-info">
-                <span className="contact-text">06 60 99 03 70</span>
-                <span className="contact-label">Devis & RDV</span>
-              </div>
-            </a>
-
-            <a href="tel:+33781609026" className="contact-item" target="_blank" rel="noopener noreferrer">
-              <Truck className="icon" size={22} />
-              <div className="contact-info">
-                <span className="contact-text">07 81 60 90 26</span>
-                <span className="contact-label">Livraison & Pose</span>
-              </div>
-            </a>
-
-            <a href="mailto:ent.altinbas@gmail.com" className="contact-item" target="_blank" rel="noopener noreferrer">
-              <Mail className="icon" size={22} />
-              <div className="contact-info">
-                <span className="contact-text">ent.altinbas@gmail.com</span>
-              </div>
-            </a>
-
-            <a
-              href="https://maps.google.com/?q=24+Rue+Francisque+Cartallier,+38780+Pont-Evêque"
-              className="contact-item"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MapPin className="icon" size={22} />
-              <div className="contact-info">
-                <span className="contact-text">24 Rue Francisque Cartallier, 38780 Pont-Evêque</span>
-              </div>
-            </a>
-          </div>
-
-          {/* Social Media */}
-          <div className="social-section">
-            <a
-              href="https://instagram.com/moustiquairealtinbas"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="Instagram"
-            >
-              <Instagram size={22} />
-            </a>
-            <a
-              href="https://facebook.com/altinbasmoustiquaire"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-              aria-label="Facebook"
-            >
-              <Facebook size={22} />
-            </a>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <footer className="footer">
-          <p className="artisanal">Fabrication artisanale en Isère (38)</p>
-          <p className="copyright">&copy; 2025 ALTINBAS</p>
-        </footer>
-      </main>
-    </>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-10 h-10 border-3 border-primary-200 border-t-primary-400 rounded-full animate-spin" />
+        <p className="text-sm text-charcoal-light">Chargement...</p>
+      </div>
+    </div>
   )
 }
 
-export default App
+export default function App() {
+  return (
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-1 pt-[72px] lg:pt-[100px]">
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path={ROUTES.home} element={<HomePage />} />
+              <Route path={ROUTES.products} element={<ProductsPage />} />
+              <Route path={ROUTES.productFenetre} element={<ProductFenetrePage />} />
+              <Route path={ROUTES.productPorte} element={<ProductPortePage />} />
+              <Route path={ROUTES.productBaie} element={<ProductBaieVitreePage />} />
+              <Route path={ROUTES.productRideaux} element={<ProductRideauxPage />} />
+              <Route path={ROUTES.gallery} element={<GalleryPage />} />
+              <Route path={ROUTES.devis} element={<DevisPage />} />
+              <Route path={ROUTES.about} element={<AboutPage />} />
+              <Route path={ROUTES.faq} element={<FAQPage />} />
+              <Route path={ROUTES.contact} element={<ContactPage />} />
+              <Route path={ROUTES.zone} element={<ZonePage />} />
+              <Route path={ROUTES.mentionsLegales} element={<MentionsLegalesPage />} />
+              <Route path={ROUTES.confidentialite} element={<ConfidentialitePage />} />
+              <Route path={ROUTES.cookies} element={<CookiesPage />} />
+              <Route path={ROUTES.cgv} element={<CGVPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Routes>
+          </Suspense>
+        </div>
+        <Footer />
+      </div>
+      <WhatsAppButton />
+      <StickyMobileCTA />
+      <ConsentBanner />
+    </BrowserRouter>
+  )
+}
