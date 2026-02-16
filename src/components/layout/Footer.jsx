@@ -116,6 +116,14 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://dmckreatif.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/40 hover:text-white/70 transition-colors text-xs"
+            >
+              Créé par DMC Kreatif
+            </a>
           </div>
         </div>
       </div>
